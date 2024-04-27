@@ -2,7 +2,8 @@
 #include <stdio.h>
 #include "structs.h"
 #include "product_module.c"
-#include "Reqs.c"
+#include "supplier_module.c"
+// #include "Reqs.c"
 
 const int limit = 512;
 int Pitems = 0;
@@ -34,7 +35,7 @@ int main()
         }
         case '2': 
         {
-            // UpPro(Pid, Pname, Pprice,Pquantity);
+            UpPro(pro);
             break;
         }
         case '3': 
@@ -44,7 +45,7 @@ int main()
         }
         case '4': 
         {
-            // DelPro(Pid, Pname, Pprice,Pquantity);
+            DelPro(pro);
             break;
         }
         case 'q': 
@@ -66,17 +67,17 @@ int main()
         switch (sch) {
         case '1': 
         {
-            // AddSup(Sid, Sname, Sadd);
+            AddSup(sup);
             break;
         }
         case '2': 
         {
-            // UpSup(Sid, Sname, Sadd);
+            // UpSup(sup);
             break;
         }
         case '3': 
         {
-            // DispSup(Sid, Sname, Sadd);
+            DispSup(sup);
             break;
         }
         case '4': 
