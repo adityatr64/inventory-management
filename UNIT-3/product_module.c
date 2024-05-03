@@ -1,11 +1,9 @@
 #include <stdio.h>
 #include <string.h>
-extern const int limit;
+#include "reqs.h"
 extern int Pitems;
-// extern int check(int id, ids *id_path, int Elements);
-
-
-void AddPro(Product *pro) 
+extern const int limit;
+void AddPro(Product *pro)
 {
   if (Pitems < limit) 
   {
@@ -14,15 +12,15 @@ void AddPro(Product *pro)
     printf("PID: ");
     here:
     scanf("%i%*c", &pid);
-    // if(check(pro->id.id,&pro->id,Pitems))
-    // {
-    //   printf("ID already exists \nEnter a diffrent ID: ");
-    //   goto here;
-    // }
+    if(check_pro(pid,pro,Pitems))
+    {
+      printf("ID already exists \nEnter a diffrent ID: ");
+      goto here;
+    }
    (pro+Pitems)->id=pid;
 
     printf("PNAME: ");
-    scanf("%s%*c",(pro + Pitems)->name);//fgets later
+    scanf("%[^\n]",(pro + Pitems)->name);
 
     printf("PRICE: ");
     scanf("%f%*c", &(pro + Pitems)->price);
@@ -44,7 +42,7 @@ void DispPro(Product *pro) //works
   printf("%s\t\t%s\t\t%s\t\t%s\n", "ID", "NAME", "PRICE", "QUANTITY");
   for (int i = 0; i < Pitems; i++) 
   {
-    printf("%i\t\t%s\t\t%.2f\t\t%i\n", (pro+i)->id, &(pro+i)->name,(pro+i)->price, (pro+i)->quantity);
+    printf("%i\t\t%s\t\t%.2f\t\t%i\n", (pro+i)->id, (pro+i)->name,(pro+i)->price, (pro+i)->quantity);
   }
 }
 void UpPro(Product *pro) //works right now
@@ -70,17 +68,17 @@ void UpPro(Product *pro) //works right now
     {
     case 1: {
       printf("PNAME: ");
-      scanf("%s%*c",(pro+i)->name);//fgets later
+      scanf("%[^\n]",(pro+i)->name);//fgets later
       break;
     }
     case 2: {
       printf("PRICE: ");
-      scanf("%f%*c", (pro+i)->price);
+      scanf("%f%*c", &(pro+i)->price);
       break;
     }
     case 3: {
       printf("QUANTITY: ");
-      scanf("%i%*c",(pro+i)->quantity);
+      scanf("%i%*c",&(pro+i)->quantity);
       break;
     }
     case 'q': {

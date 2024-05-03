@@ -1,9 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "structs.h"
 #include "product_module.c"
 #include "supplier_module.c"
-// #include "Reqs.c"
+#include "transaction_module.c"
+
 
 const int limit = 512;
 int Pitems = 0;
@@ -72,7 +72,7 @@ int main()
         }
         case '2': 
         {
-            // UpSup(sup);
+            UpSup(sup);
             break;
         }
         case '3': 
@@ -82,7 +82,7 @@ int main()
         }
         case '4': 
         {
-            // DelSup(Sid, Sname, Sadd);
+            DelSup(sup);
             break;
         }
         case 'q': 
@@ -103,15 +103,15 @@ int main()
         switch (sch) 
         {
         case '1': {
-            // AddTrans(Tid, Tpid, Tquantity,date);
+            AddTrans(trans);
             break;
         }
         case '2': {
-            // UpTrans(Tid, Tpid, Tquantity,date);
+            UpTrans(trans);
             break;
         }
         case '3': {
-            // DispTrans(Tid, Tpid,Tquantity, date);
+            DispTrans(trans);
             break;
         }
         case 'q':
